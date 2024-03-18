@@ -1,4 +1,4 @@
-# Module#5 React Day #9 CLasswork: Physical Health WebApp
+# Module#5 React Day #9 Classwork: Physical Health WebApp
 ![](thumbnail.png)
 
 ## Hosted Version of the Project:
