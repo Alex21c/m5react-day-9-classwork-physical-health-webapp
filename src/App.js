@@ -1,10 +1,10 @@
 import './App.css';
 import './Assests/fontAwesomeProIcons/fontAwesomeIcons.css';
-
+import PhysicalHealth from './Components/PhysicalHealth';
 function App() {
   return (
     <div>
-      Our React App, is up and running!
+      <PhysicalHealth/>
     </div>
 
   );
