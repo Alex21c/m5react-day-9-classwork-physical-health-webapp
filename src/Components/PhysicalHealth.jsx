@@ -65,7 +65,7 @@ export default function PhysicalHealth(){
       }
     });
 
-    console.log('searching ' + query);
+    //console.log('searching ' + query);
   }
 
 
@@ -93,7 +93,7 @@ export default function PhysicalHealth(){
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result);
+      //console.log(result);
       // now increase the offset value, and append exercises
         updateStateExercises(previousState=>{
           return {
@@ -134,7 +134,7 @@ export default function PhysicalHealth(){
 
   useEffect(()=>{
 
-     console.log(stateExercises);
+     //console.log(stateExercises);
 
 
   },[stateExercises]);
