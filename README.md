@@ -4,7 +4,7 @@
 ## Hosted Version of the Project:
 [m5react-day-9-classwork-physical-health-webapp](https://m5react-day-9-classwork-physical-health-webapp.vercel.app/)
 
-## Objective
+## Objectives
 + Developed a Physical Health Website using React.
 + Utilized the useEffect hook to fetch data from an API.
 + Implemented a search bar using the useState hook for user-friendly data retrieval.
