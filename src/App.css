@@ -21,3 +21,33 @@ html{
 }
 
 
+@media screen and (max-width: 1158px){
+  section.wrapperExerciseCard{
+    width: 95%;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    
+  }
+
+  
+}
+@media screen and (max-width: 1004px){
+  div.wrapperExerciseImgAndDescription{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  div.exerciseImg{
+    max-width: unset;
+    max-height: unset;
+    min-width: unset;
+    min-height: unset;    
+    max-width:20rem;
+    max-height: 20rem;
+  }
+}
+
+
+@media screen and (max-width: 475px){
+
+}

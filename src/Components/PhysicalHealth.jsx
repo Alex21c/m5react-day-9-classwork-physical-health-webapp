@@ -7,6 +7,7 @@ export default function PhysicalHealth(){
   // create a state to maintain fetched Exercises
     let initialState= {
       exercises : [],
+      exercisesBK : [], // it will help when filter operation results are stored inside exercises to preserver Exercises
       api : {
         requestURL : "https://exercisedb.p.rapidapi.com/exercises",
         offset : 0, // means if offset is 10 that means fetch images from 11 to N
@@ -17,12 +18,32 @@ export default function PhysicalHealth(){
     };
     let [stateExercises, updateStateExercises] = useState(initialState)
   
+  function bkExercises(){
+    updateStateExercises(previousState=>{
+      return {
+        ...previousState, 
+        exercisesBK : [...previousState.exercises]
+      };
+    });
+  }
+
+  
+  function restoreExercises(){
+    updateStateExercises(previousState=>{
+      return {
+        ...previousState, 
+        exercises : [...previousState.exercisesBK]
+      };
+    });
+  }  
+
   function debounce(fxn, delay){
     let timerId;
     return function(){
       let context = this;
       let args=arguments;
       clearTimeout(timerId);
+      restoreExercises();
       timerId = setTimeout(()=>{
         fxn.apply(context, args);
       }, delay);
@@ -30,6 +51,20 @@ export default function PhysicalHealth(){
   }
   function searchExercise(event){
     let query = event.target.value;
+    // safeguard
+      if(query === ''){
+        return ;
+      }
+   
+      
+    let results =  stateExercises.exercises.filter(exercise=> exercise.target.includes(query) || exercise.bodyPart.includes(query) || exercise.name.includes(query));
+    updateStateExercises(previousState=>{
+      return {
+        ...previousState,
+        exercises: [...results]
+      }
+    });
+
     console.log('searching ' + query);
   }
 
@@ -82,6 +117,9 @@ export default function PhysicalHealth(){
       
         }
       });
+
+      // and as well backup
+        bkExercises();
     }
 
     
@@ -105,7 +143,7 @@ export default function PhysicalHealth(){
   return (
     <div className="flex flex-col items-center mb-[3rem] m-[1rem]">
       <input className="text-stone-900 transition outline outline-2 
-      outline-stone-300 focus:outline-yellow-500 p-[.5rem]   rounded-md" type="text" placeholder="Search Exercise" onChange={debounce( (event)=>searchExercise(event), 1000)} />
+      outline-stone-300 focus:outline-yellow-500 p-[.5rem]   rounded-md" type="search" placeholder="Search Exercise" onChange={debounce( (event)=>searchExercise(event), 1000)} />
       
 
       {

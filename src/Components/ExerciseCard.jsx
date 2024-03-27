@@ -1,11 +1,11 @@
 export default function ExerciseCard({exercise, idx}){
   return (
-    <section className="my-[2rem] p-[2rem] bg-stone-100 shadow-xl rounded-md max-w-[70rem] m-[auto]">
+    <section className="wrapperExerciseCard my-[2rem] p-[2rem] bg-stone-100 shadow-xl rounded-md max-w-[70rem] m-[auto]">
       <h2 className="font-semibold text-[1.8rem] text-stone-900">#{idx} {exercise.name}</h2>
       
-      <div className="flex gap-[1rem] pt-[1rem]">
-        <div>
-          <img src={exercise.gifUrl} className="rounded-full"/>
+      <div className="wrapperExerciseImgAndDescription flex gap-[2rem] pt-[1rem]">
+        <div className="exerciseImg min-w-[25rem] min-h-[25rem] rounded-full overflow-hidden">
+          <img src={exercise.gifUrl} className=" object-contain w-[100%] h-[100%]"/>
         </div>
 
         <dl>
